@@ -23,20 +23,20 @@ public class LoginWindow extends JFrame {
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Image icono = tk.getImage("src/img/icono.png");
 		setIconImage(icono);
-		
-
-		ImageIcon iconoCursor = new ImageIcon("src/img/icono.png");
-		Cursor miCursor = tk.createCustomCursor(iconoCursor.getImage(), 
-				new Point(0,0), "Mi Cursor");
-		//setCursor(miCursor);
-		
+			
 		//LoginView panelito = new LoginView();
 		//FlowPanel panelito = new FlowPanel();
-		//BorderPanel panelito = new BorderPanel();
+		BorderPanel panelito = new BorderPanel();
 		//GridPanel panelito = new GridPanel();
 		//BoxPanel panelito = new BoxPanel();
-		GridBagPanel panelito = new GridBagPanel();
+		//GridBagPanel panelito = new GridBagPanel();
 		add(panelito);
+	
+		setVisible(true);
+		//pack();
+
+		//validate();
+		//repaint();
 	}
 }
 

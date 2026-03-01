@@ -4,7 +4,10 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
+import utils.AppFont;
+//import views.FormularioRegistro;
 import views.LoginWindow;
 
 public class Main {
@@ -12,14 +15,22 @@ public class Main {
 	public static void main(String[] args) {
 		
 		LoginWindow ventanita = new LoginWindow();
+		showOnScreen(1, ventanita);
+		
+		UIManager.put("Label.font", AppFont.normal());
+		UIManager.put("Button.font", AppFont.title());
+		UIManager.put("TextField.font", AppFont.small());
+		
+		//FormularioRegistro formulario = new FormularioRegistro();
+		//showOnScreen(1, formulario);
 	}
-	
+
 	public static void showOnScreen(int screen, JFrame frame ) {
 	    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	    GraphicsDevice[] gd = ge.getScreenDevices();
 	    int width = 0, height = 0;
-	    
-	    if ( screen > -1 && screen < gd.length ) {
+
+	    if( screen > -1 && screen < gd.length ) {
 	        width = gd[screen].getDefaultConfiguration().getBounds().width;
 	        height = gd[screen].getDefaultConfiguration().getBounds().height;
 	        frame.setLocation(
