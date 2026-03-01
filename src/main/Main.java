@@ -14,15 +14,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		LoginWindow ventanita = new LoginWindow();
-		showOnScreen(1, ventanita);
+		//LoginWindow ventanita = new LoginWindow();
+		//showOnScreen(1, ventanita);
 		
 		UIManager.put("Label.font", AppFont.normal());
 		UIManager.put("Button.font", AppFont.title());
 		UIManager.put("TextField.font", AppFont.small());
 		
-		//FormularioRegistro formulario = new FormularioRegistro();
-		//showOnScreen(1, formulario);
+		FormularioRegistro formulario = new FormularioRegistro();
+		showOnScreen(1, formulario);
 	}
 
 	public static void showOnScreen(int screen, JFrame frame ) {

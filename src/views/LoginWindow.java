@@ -26,7 +26,7 @@ public class LoginWindow extends JFrame {
 			
 		//LoginView panelito = new LoginView();
 		//FlowPanel panelito = new FlowPanel();
-		BorderPanel panelito = new BorderPanel();
+		//BorderPanel panelito = new BorderPanel();
 		//GridPanel panelito = new GridPanel();
 		//BoxPanel panelito = new BoxPanel();
 		//GridBagPanel panelito = new GridBagPanel();
