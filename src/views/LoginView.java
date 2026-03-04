@@ -5,11 +5,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,7 +26,8 @@ import java.io.*;
 
 public class LoginView extends JPanel{
 	
-Font fuente;
+	Font fuente;
+	JTextField txtEmail;
 
 	
 
@@ -50,8 +54,25 @@ Font fuente;
 		boton1.setBounds(250,320,160,60);
 		boton1.setToolTipText("Haz click aquí");
 		boton1.setFont(fuente);
-
 		add(boton1);
+		
+		/*boton1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Iniciando sesion");
+				JOptionPane.showMessageDialog(
+						null,
+						"Se Inicio la sesion",
+						"Sesion iniciada", 
+						JOptionPane.INFORMATION_MESSAGE
+						
+				);
+			}
+		});
+		*/
+		boton1.addActionListener(e -> login());
+		
 	}
 	
 	
@@ -83,7 +104,7 @@ Font fuente;
 		add(lblEmail);
 		
 
-		JTextField txtEmail = new JTextField();
+		txtEmail = new JTextField();
 		TextPrompt promptEmail = new TextPrompt("Ingresa tu usuario", txtEmail);
 		txtEmail.setFont(fuente);
 		txtEmail.setBounds(txtX,y,200,40);
@@ -127,5 +148,26 @@ Font fuente;
 		add(errorSegundo);
 	}
 	
-
+	private void login() {
+		if (validateLogin()) {
+		JOptionPane.showMessageDialog(
+				null,
+				"Se inicio la sesion",
+				"Sesion iniciada",
+				JOptionPane.INFORMATION_MESSAGE
+			);
+		} else {
+			JOptionPane.showMessageDialog(
+					null,
+					"Datos no Ingresados o Incompletos",
+					"Error",
+					JOptionPane.ERROR_MESSAGE
+				);
+		}
+	}
+	
+	private boolean validateLogin() {
+		if (txtEmail.getText().trim().isEmpty());
+		return false;
+	}
 }

@@ -25,18 +25,10 @@ public class LoginWindow extends JFrame {
 		setIconImage(icono);
 			
 		//LoginView panelito = new LoginView();
-		//FlowPanel panelito = new FlowPanel();
-		//BorderPanel panelito = new BorderPanel();
-		//GridPanel panelito = new GridPanel();
-		//BoxPanel panelito = new BoxPanel();
-		//GridBagPanel panelito = new GridBagPanel();
+		BorderPanel panelito = new BorderPanel();
 		add(panelito);
 	
 		setVisible(true);
-		//pack();
-
-		//validate();
-		//repaint();
 	}
 }
 

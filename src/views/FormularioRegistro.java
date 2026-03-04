@@ -25,7 +25,8 @@ public class FormularioRegistro extends JFrame{
 		setTitle("Registro de Paquete");
 		setLocationRelativeTo(null);
 	    setLayout(new BorderLayout());
-	    getContentPane().setBackground(Color.WHITE);		
+	    getContentPane().setBackground(Color.WHITE);	
+	    
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Image icono = tk.getImage("src/img/icono.png");
 		setIconImage(icono);
@@ -58,6 +59,7 @@ public class FormularioRegistro extends JFrame{
 			JTextField txt = new JTextField(10);
 			panelComponentes.add(txt);
 		}
+		
 		JPanel panelBoton = new JPanel();
 		panelBoton.setBackground(Color.WHITE);
 		javax.swing.JButton btnGuardar = new javax.swing.JButton("Guardar");
