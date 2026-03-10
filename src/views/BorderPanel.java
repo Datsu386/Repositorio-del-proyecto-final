@@ -18,10 +18,12 @@ import javax.swing.border.Border;
 
 public class BorderPanel extends JPanel {
 	
+	LoginWindow window;
 	Font fuente;
 	Image backgroundImage;
 	
-	public BorderPanel() {
+	public BorderPanel(LoginWindow window) {
+		this.window = window;
 		setLayout(new BorderLayout());
 		Border emptyBorder = BorderFactory.createEmptyBorder(20,10,20,10);
 		setBorder(emptyBorder);
@@ -46,13 +48,29 @@ public class BorderPanel extends JPanel {
 		panelCentroSur.add(btnInicio);
 		btnInicio.setOpaque(false);
 		
+		btnInicio.addActionListener(e-> handleLogin());
+		
 		JButton btnInvitado = new JButton("Entrar como Invitado");
 		btnInvitado.setToolTipText("Entra sin necesidad de crear cuenta");
 		panelCentroSur.add(btnInvitado);
 		btnInvitado.setOpaque(false);
+
+		btnInvitado.addActionListener(e-> handleGuest());
 		
 		add(panelCentro, BorderLayout.CENTER);
 	
+	}
+	
+
+	private void handleLogin() {
+
+		new LoginView();
+		window.dispose();
+	}
+
+	private void handleGuest() {
+		new FormularioRegistro();
+		window.dispose();
 	}
 	
 	

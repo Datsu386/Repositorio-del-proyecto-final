@@ -24,8 +24,10 @@ public class LoginWindow extends JFrame {
 		Image icono = tk.getImage("src/img/icono.png");
 		setIconImage(icono);
 			
-		//LoginView panelito = new LoginView();
-		BorderPanel panelito = new BorderPanel();
+		BorderPanel panelito = new BorderPanel(this);
+		add(panelito);
+
+		LoginView panelito = new LoginView();
 		add(panelito);
 	
 		setVisible(true);

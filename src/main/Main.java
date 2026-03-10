@@ -21,8 +21,8 @@ public class Main {
 		UIManager.put("Button.font", AppFont.title());
 		UIManager.put("TextField.font", AppFont.small());
 		
-		//FormularioRegistro formulario = new FormularioRegistro();
-		//showOnScreen(1, formulario);
+		FormularioRegistro formulario = new FormularioRegistro();
+		showOnScreen(1, formulario);
 	}
 
 	public static void showOnScreen(int screen, JFrame frame ) {
