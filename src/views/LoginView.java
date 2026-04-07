@@ -24,6 +24,10 @@ import components.LoginButton;
 import components.RoundButton;
 import components.TextPrompt;
 
+import utils.CaracteresInvalidosException;
+import utils.InvalidPasswordException;
+import utils.InvalidUserException;
+
 import javax.imageio.*;
 import java.io.*;
 
@@ -159,6 +163,8 @@ private void crearBotones() {
 
 	private void handleLogin() {
 
+		
+		try {
 			if(validacion(emailField.getText(), String.valueOf(passwordField.getPassword()))) {
 				JOptionPane.showMessageDialog(
 					this,
@@ -170,7 +176,25 @@ private void crearBotones() {
 				new MainView();
 				window.dispose();
 			}
+			
+		}catch(InvalidPasswordException ex) {
+				JOptionPane.showMessageDialog(
+						this,
+						"eStA mAl eN aLgO, nI mOdO", 
+						"EEGGHH, EsTa MaL", 
+						JOptionPane.ERROR_MESSAGE
+					);
 		}
+		
+		catch(InvalidUserException ex) {
+			JOptionPane.showMessageDialog(
+					this,
+					"eStA mAl eN aLgO, nI mOdO", 
+					"EEGGHH, EsTa MaL", 
+					JOptionPane.ERROR_MESSAGE
+				);
+		}
+	}
 
 	private void showEmailError(String message) {
 		correo.setText(message);
@@ -186,7 +210,8 @@ private void crearBotones() {
 		contrasena.setText("");
 	}
 
-	private boolean validacion(String email, String password) {
+	private boolean validacion(String email, String password) 
+			throws InvalidUserException, InvalidPasswordException {
 
 		resetErrorMessages();
 
@@ -200,7 +225,16 @@ private void crearBotones() {
 			return false;
 		};
 
+		if(!email.trim().isEmpty() && !email.trim().equals("Javier Arturo Lopez")) {
+			throw new InvalidUserException();
+		}
+				
+		if(!password.trim().isEmpty() && !password.trim().equals("1234")) {
+			throw new InvalidPasswordException();
+		};
+		
 		return true;
 		}
+
 
 }
