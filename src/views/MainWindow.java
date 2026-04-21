@@ -1,45 +1,27 @@
 package views;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import java.awt.event.KeyEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class MainView extends JFrame {
+public class MainWindow extends JFrame {
 
-	public static final String HOME = "HOME";
-	public static final String USERS = "USERS";
-	
 	public JMenuItem mItemExit;
+	public JButton btnViewUsers;
 	public JButton btnUsers;
-	public JButton btnHome;
-	public UserView usersPanel;
-	
-	private CardLayout cardLayout;
-	private JPanel container;
-	
-	public MainView() {
+
+	public MainWindow() {
 
 		setSize(500, 500);
 		setTitle("Mi aplicación");
@@ -47,43 +29,14 @@ public class MainView extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		setMenu();
+
+		JPanel panel = new JPanel();
+		add(panel);
 		
-		createNavbar();
-		createViews();
+		btnUsers = new JButton("Ver Usuarios");
+		panel.add(btnUsers);
 
 		setVisible(true);
-	}
-	
-	public void createNavbar() {
-		JPanel navbar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		
-		btnHome = new JButton("Inicio");
-		btnUsers = new JButton("Usuarios");
-		
-		navbar.add(btnHome);
-		navbar.add(btnUsers);
-		
-		add(navbar, BorderLayout.NORTH);
-	}
-	
-	private void createViews() {
-		cardLayout = new CardLayout();
-		container = new JPanel(cardLayout);
-		
-		JPanel homePanel = new JPanel();
-		homePanel.add(new JLabel("Bienvenido al Sistema"));
-		
-		usersPanel = new UserView();
-		
-		container.add(homePanel, HOME);
-		container.add(usersPanel, USERS);
-		
-		add(container, BorderLayout.CENTER);
-		
-	}
-	
-	public void showView(String view) {
-		cardLayout.show(container, view);
 	}
 
 	public void setMenu() {
@@ -123,7 +76,7 @@ public class MainView extends JFrame {
 	    menuOtherOption.add(mItemOption2);
 
 	}
-	
+
 	public int confirmExit() {
 	    return JOptionPane.showConfirmDialog(
 	        this,
@@ -178,7 +131,7 @@ public class MainView extends JFrame {
 
 			}
 		});
-		
+
 		/*panel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON1 && e.isControlDown()) {
@@ -198,4 +151,5 @@ public class MainView extends JFrame {
 			}
 		});*/
 
-	}}
+	}
+}
