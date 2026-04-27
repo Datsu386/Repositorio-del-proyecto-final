@@ -10,9 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import models.User;
 import models.UserModelo;
 import repository.UserRepositorio;
 import views.LoginWindow;
+import views.MainWindow;
 import views.MainView;
 import views.UserView;
 import views.FormularioRegistro;
@@ -34,7 +36,7 @@ public class RegistrationControllers {
 
             if(validateForm()){
 
-                UserView user = new User(
+                User user = new User(
                         view.getUserName(),
                         view.getEmail(),
                         view.getCountry(),
@@ -128,7 +130,7 @@ public class RegistrationControllers {
 
     }
     
-    private void registerUser(UserModelo user) {
+    private void registerUser(User user) {
     	
     	try {
     		repository.save(user);

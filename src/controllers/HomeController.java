@@ -2,24 +2,14 @@ package controllers;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.util.List;
-
-import javax.swing.JOptionPane;
-
-import models.UserModelo;
-import repository.UserRepositorio;
-import repository.UserRepositorio;
-import tableModels.UserTableModel;
-import views.LoginWindow;
-import views.MainView;
-import views.MainView;
+import views.MainWindow;
 
 public class HomeController {
 
-	private MainView view;
+	private MainWindow view;
+	private UserControl userControl;
 	
-	public HomeController(MainView view) {
+	public HomeController(MainWindow view) {
 		
 		this.view = view;
 		registerListeners();
@@ -41,31 +31,25 @@ public class HomeController {
 			showUsers();
 		});
 		
-		view.btnHome.addActionListener(e -> view.showView(MainView.HOME));
+		view.btnHome.addActionListener(e -> {
+			view.showView(MainWindow.HOME);
+			updateMenuState(MainWindow.HOME);
+		});
 		
 	}
 	
 	private void showUsers() {
-		
-		UserControl controller = new UserControl(view.usersPanel);
-		
-		UserRepositorio repository = new UserRepositorio();
-		
-		try {
-			List<UserModelo> users = repository.getUsers();
-			
-			UserTableModel model = new UserTableModel(users);
-			
-			view.usersPanel.setTableModel(model);
-			
-			view.showView(MainView.USERS);
-			
-		}catch (IOException ex) {
-			JOptionPane.showMessageDialog(view, ex.getMessage());
+		if(userControl == null) {
+			userControl = new UserControl(view.usersPanel);
 		}
+			
+		userControl.loadUsers();
+		
+		view.showView(MainWindow.USERS);
+		updateMenuState(MainWindow.USERS);
 		
 	}
-	 
+	
 	private void handleClose() {
 		/*int option = view.confirmExit();
 		System.out.println(option);
@@ -76,4 +60,8 @@ public class HomeController {
 		//}
 	}
 	
+	private void updateMenuState(String viewName) {
+		view.btnUsers.setEnabled(!viewName.equals(MainWindow.USERS));
+		view.btnHome.setEnabled(!viewName.equals(MainWindow.HOME));
+	}
 }
